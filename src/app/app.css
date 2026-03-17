@@ -1,0 +1,5 @@
+body {
+  background-image: url('/assets/landing_bg_image.jpg');
+  background-size: cover;
+  background-position: center;
+}
