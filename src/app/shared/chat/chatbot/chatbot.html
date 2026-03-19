@@ -1,0 +1,52 @@
+<div class="mx-auto px-2 sm:px-6 lg:px-8 fixed bottom-10 right-0">
+  <img
+    src="svgs/pepsico_min_chat.svg"
+    [class]="isOpenChatLog() ? 'hidden' : 'relative w-15 -mb-15 -ml-5 cursor-pointer'"
+  />
+  <div
+    [class]="
+      isOpenChatLog() && !isExpandedPanel()
+        ? 'rounded-2xl cursor-default bg-white h-[60vh] w-[450px] shadow-gray-700-300 shadow-xl/30'
+        : isOpenChatLog() && isExpandedPanel()
+        ? 'rounded-2xl cursor-default bg-white h-[90vh] w-[40vw] shadow-gray-700-300 shadow-xl/30'
+        : 'w-34 h-34 bg-white p-5 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none shadow-gray-700-300 shadow-xl/30 cursor-pointer flex items-center'
+    "
+    (click)="!isOpenChatLog() ? isOpenChatLog.set(true) : null"
+  >
+    <img
+      src="svgs/pepsico_logo_square.svg"
+      alt="Pepsico Logo Square"
+      class="w-34 h-34"
+      [class]="isOpenChatLog() ? 'opacity-0' : 'opacity-100'"
+    />
+
+    <div
+      class="absolute inset-x-8 inset-y-0 flex flex-col transition-all"
+      [class]="
+        isOpenChatLog()
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-4'
+      "
+    >
+      <app-chat-controls
+        (hideChatLog)="handleHideChat()"
+        (expandPanel)="handleExpandChange($event)"
+      ></app-chat-controls>
+
+      <app-chatlog
+        [chatHistory]="chatHistory"
+        [isLoading]="isLoadingResponse()"
+        [class]="isOpenChatLog() ? 'overflow-auto' : 'overflow-hidden'"
+        class="bg-gray-50 h-full shadow-[5px_5px_9px_5px_rgba(0,0,0,0)]"
+      >
+      </app-chatlog>
+
+      <app-chat-input
+        (sendUserMessage)="handleUserMessage($event)"
+        (changeModel)="setSelectedModel($event)"
+        class="bg-gray-50 mt-auto rounded-b-2xl"
+      ></app-chat-input>
+
+    </div>
+  </div>
+</div>

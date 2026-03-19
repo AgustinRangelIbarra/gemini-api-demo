@@ -1,0 +1,25 @@
+<div class="flex justify-between items-center px-4 py-3">
+  <p class="flex flex-row items-center text-lg font-bold font-stretch-condensed"> <img src="svgs/pepsico_logo_square.svg" class="h-[1.8rem] pr-2"/><span>Team PepsiCo Agent</span></p>
+  <div class="flex flex-row gap-4">
+    <button
+      (click)="close($event)"
+      class="rounded-full transition-colors cursor-pointer"
+    >
+    <img src="svgs/loading.svg" alt="Options" class="h-full w-5"/>
+    </button>
+
+    <button
+      (click)="onTogglePanel($event)"
+      class="rounded-full transition-colors cursor-pointer"
+    >
+      <img src="svgs/expand_panel.svg" alt="Expand" class="h-full w-5"/>
+    </button>
+
+    <button
+      (click)="close($event)"
+      class="rounded-full transition-colors cursor-pointer"
+    >
+      <img src="svgs/arrow_down_dark.svg" alt="Expand" class="h-full w-5"/>
+    </button>
+  </div>
+</div>

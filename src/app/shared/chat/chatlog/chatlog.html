@@ -1,0 +1,30 @@
+<div class="overflow-auto chatlog-container">
+  <div class="flex flex-col gap-1 p-4 start">
+    <span class="bg-[#E5E5E5] w-fit p-2 text-black rounded-br-xl rounded-tl-xl rounded-tr-xl max-w-3/4">
+      Hello, I'm the Team PepsiCo Agent. How can I help you today?
+    </span>
+    <span class="block text-sm text-gray-500">Team PepsiCo Agent</span>
+  </div>
+  @for (registry of chatHistory(); track $index) {
+    <div class="flex flex-col gap-1 p-4 start" [class]="registry.sender === 'user' ? 'items-end': 'items-start' ">
+      @if (registry.sender === 'user') {
+        <span class="p-2  bg-[#03345A] w-fit text-white rounded-bl-xl rounded-tl-xl rounded-tr-xl max-w-3/4">{{registry.message}}</span>
+        <span class="block text-sm text-gray-500">Read: {{registry.date}}</span>
+      }
+      @if (registry.sender === 'Team PepsiCo Agent') {
+        <span class="bg-[#E5E5E5] w-fit p-2 text-black rounded-br-xl rounded-tl-xl rounded-tr-xl max-w-3/4">
+          @if (registry.image){
+            <img [src]="renderImage(registry)" alt="Registry Image" class="w-full rounded-full" />
+          }
+          {{registry.message}}
+        </span>
+        <span class="block text-sm text-gray-500">Team PepsiCo Agent &bull; {{registry.date}}</span>
+      }
+    </div>
+  }
+  @if (isLoading()) {
+    <div class="flex flex-col gap-1 p-4">
+      <span class="bg-[#E5E5E5] w-fit p-2 text-white rounded-br-xl rounded-tl-xl rounded-tr-xl"><img src="svgs/loading.svg" alt="Loading..." class="h-6"/></span>
+    </div>
+  }
+</div>

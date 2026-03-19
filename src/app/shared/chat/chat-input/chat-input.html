@@ -1,0 +1,39 @@
+<div class="overflow-auto">
+  <div class="mt-2">
+    <div class="flex items-center rounded-full shadow-[1px_1px_9px_5px_rgba(0,0,0,0.13)] p-3 m-3">
+      <div class="pl-2 text-gray-400">
+        <img
+          src="svgs/plus.svg"
+          alt="Add"
+          class="h-4 cursor-pointer"
+          (click)="toggleSubmenu($event)"
+        />
+      </div>
+      <input
+        [(ngModel)]="userInput"
+        (keydown.enter)="sendMessage()"
+        id="userInput"
+        type="text"
+        name="userInput"
+        placeholder="Ask me anything"
+        class="block pl-2 min-w-0 grow text-base text-black placeholder:text-gray-500 focus:outline-none"
+        maxlength="100"
+      />
+      <div class="pr-2 text-gray-400 "><img src="svgs/wave.svg" alt="Wave" class="h-4 pl-3"/></div>
+      @if (isOpenSubmenu) {
+        <app-submenu
+          (onOptionSelection)="handleModelSelection($event)"
+          class="absolute bottom-25 left-0 mb-4 max-w-100 w-3/4 z-100"
+        ></app-submenu>
+      }
+    </div>
+    <div>
+      <p class="p-3 text-right flex flex-row justify-end items-center text-sm">
+        <span>Powered by Gemini </span>
+        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google-gemini.svg" alt="Gemini" class="h-4 inline mx-1"/>
+        <span> | Upcoming </span>
+        <img src="svgs/agentforce.svg" alt="Agentforce" class="h-[1.2rem] inline mx-1"/>
+      </p>
+    </div>
+  </div>
+</div>
