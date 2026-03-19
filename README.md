@@ -1,3 +1,15 @@
+### Add your own [Gemini Api](https://ai.google.dev/gemini-api/docs) 
+
+Create a file on `src/environments/environment.ts`
+
+`environments.ts`
+
+`export const environment = {
+  production: false,
+  geminiApiKey: 'yourOwnGeminiApi',
+};`
+
+
 # SalesforceDemoSpa
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
